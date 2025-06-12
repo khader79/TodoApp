@@ -1,0 +1,102 @@
+.toplab {
+  text-align: center;
+  padding-top: 200px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  direction: ltr;
+}
+
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  direction: ltr;
+}
+
+.From {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.267);
+  width: 100%;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userlab,
+.passlab {
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.inUser,
+.inPass {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: border 0.2s ease-in-out;
+  outline: none;
+}
+
+.inUser:focus,
+.inPas:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.LogBu {
+  padding: 10px 0;
+  background-color: #0071e3;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.LogBu:hover {
+  background-color: #005bb5;
+}
+
+.hide {
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
+
+
+.passWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passWrapper .inPass {
+  width: 100%;
+  padding-right: 35px; /* Give space for the icon */
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-80%);
+  cursor: pointer;
+  font-size: 30px;
+  color: #333;
+}
