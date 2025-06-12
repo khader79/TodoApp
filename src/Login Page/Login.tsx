@@ -56,7 +56,7 @@ const Login = () => {
         <div className="From">
           <label className="userlab">Username</label>
           <input
-          className="inUser"
+            className="inUser"
             type="text"
             name="usename"
             value={data2.username}
@@ -65,7 +65,8 @@ const Login = () => {
 
           <label className="passlab">Password</label>
           <div className="passWrapper">
-            <input className="inPass"
+            <input
+              className="inPass"
               type={vis ? "text" : "password"}
               name="password"
               value={data2.password}
@@ -80,7 +81,7 @@ const Login = () => {
           <button onClick={click1} className="LogBu">
             Click
           </button>
-          <h3 className={data2.Massage == "" ? "hide" : "Display"}>
+          <h3 className={data2.Massage == "" ? "hide" : "display"}>
             {data2.Massage}
           </h3>
         </div>
