@@ -2,22 +2,20 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Grid, IconButton } from "@mui/material";
-import { MdCheckCircleOutline } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
+import { MdCheckCircleOutline, MdDelete, MdEdit } from "react-icons/md";
 import "./TodoPage.css";
 import { todoCon } from "../Context/todoCon";
 import { useContext } from "react";
 
 function Todo({ todo1 }) {
   const context = useContext(todoCon);
-  if (!context) return null;
+  if (!context) return null; // ✅ حل المشكلة
   const { todo, setTodo } = context;
 
   const changeCom = () => {
-    const todoMap = todo.map((data5) => {
-      if (data5.id == todo1.id) {
-        data5.isCompleted = !data5.isCompleted;
+    const todoMap = (todo ?? []).map((data5) => {
+      if (data5.id === todo1.id) {
+        return { ...data5, isCompleted: !data5.isCompleted };
       }
       return data5;
     });
@@ -34,12 +32,12 @@ function Todo({ todo1 }) {
   const changeCom2 = () => {
     let title = prompt("Enter the title of " + todo1.title);
     let details = prompt("Enter the details");
-    const todoMap = todo.map((data5) => {
-      if (data5.id == todo1.id) {
+
+    const todoMap = (todo ?? []).map((data5) => {
+      if (data5.id === todo1.id) {
         if (title === "" && details === "") {
           return { ...data5 };
         }
-
         return {
           ...data5,
           ...(title !== "" && { title }),
@@ -51,11 +49,12 @@ function Todo({ todo1 }) {
     setTodo(todoMap);
     localStorage.setItem("todo", JSON.stringify(todoMap));
   };
+
   return (
     <Card sx={{ marginTop: 5, backgroundColor: "#3498db" }}>
       <CardContent sx={{ height: "100%" }}>
-        <Grid container spacing={2}>
-          <Grid size={7.5}>
+        <Grid container spacing={2} component="div">
+          <Grid size={8} component="div">
             <Typography
               variant="h5"
               component="div"
@@ -75,18 +74,19 @@ function Todo({ todo1 }) {
             </Typography>
           </Grid>
           <Grid
-            size={4.5}
+            size={4}
+            component="div"
             display={"flex"}
             justifyContent={"space-around"}
             alignItems={"center"}
           >
-            <IconButton aria-label="delete">
+            <IconButton aria-label="complete">
               <MdCheckCircleOutline
                 className={todo1.isCompleted ? "back4" : "back1"}
                 onClick={changeCom}
               />
             </IconButton>
-            <IconButton aria-label="delete">
+            <IconButton aria-label="edit">
               <MdEdit className="back2" onClick={changeCom2} />
             </IconButton>
             <IconButton aria-label="delete">
