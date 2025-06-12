@@ -26,8 +26,13 @@ export default function TodoPage() {
 
   const [titlein, setTitlein] = useState("");
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("todo") || "[]");
-    setTodo(items);
+    try {
+      const raw = localStorage.getItem("todo");
+      const items = raw ? JSON.parse(raw) : [];
+      setTodo(Array.isArray(items) ? items : []);
+    } catch {
+      setTodo([]);
+    }
   }, []);
   const handelAdd = () => {
     const newtodo = {
